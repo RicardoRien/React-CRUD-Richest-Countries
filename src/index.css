@@ -1,0 +1,14 @@
+body {
+ background: #61dafb;
+ color: black; 
+}
+
+.btn-flat {
+  background-color: purple;
+  color: white;
+}
+
+.btn-xxl {
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+}
