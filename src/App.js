@@ -7,14 +7,14 @@ function App() {
   // Source: https://knoema.com/sijweyg/world-gdp-per-capita-ranking-2019-data-and-charts
   // Data:
   const countryData = [
-    { rank: 1, name: "Luxembourg", gpd: 113196.5 },
-    { rank: 2, name: "Switzerland", gpd: 83716.8 },
-    { rank: 3, name: "Macao", gpd: 81151.9 },
-    { rank: 4, name: "Norway", gpd: 77975.4 },
-    { rank: 5, name: "Ireland", gpd: 77771.2 },
-    { rank: 6, name: "Qatar", gpd: 69687.7 },
-    { rank: 7, name: "Iceland", gpd: 67037 },
-    { rank: 8, name: "United States", gpd: 65112 }
+    { rank: 1, name: "Luxembourg", gdp: 113196.5 },
+    { rank: 2, name: "Switzerland", gdp: 83716.8 },
+    { rank: 3, name: "Macao", gdp: 81151.9 },
+    { rank: 4, name: "Norway", gdp: 77975.4 },
+    { rank: 5, name: "Ireland", gdp: 77771.2 },
+    { rank: 6, name: "Qatar", gdp: 69687.7 },
+    { rank: 7, name: "Iceland", gdp: 67037 },
+    { rank: 8, name: "United States", gdp: 65112 }
   ];
   // States ~
   const [data, setData] = useState(countryData);
@@ -24,7 +24,7 @@ function App() {
   const [selectedCountry, setSelectedCountry] = useState({
     rank: '',
     name: '',
-    gpd: ''
+    gdp: ''
   });
   // Funcions = () =>
   const selectCountry = (element, modify) => {
@@ -58,7 +58,7 @@ function App() {
     let newData = data;
     newData.forEach( (country) => {
       if(country.rank === selectedCountry.rank) {
-        country.gpd = selectedCountry.gpd;
+        country.gdp = selectedCountry.gdp;
         country.name = selectedCountry.name;
       };
     });
@@ -73,7 +73,7 @@ function App() {
 
   const updateRank = () => {
     let countryDataUpdate = [...data];
-    countryDataUpdate.sort((a,b) => a.gpd < b.gpd ? 1 : -1)
+    countryDataUpdate.sort((a,b) => a.gdp < b.gdp ? 1 : -1)
     .map((value, index) => {
       value.rank = index + 1;
       return value;
@@ -105,7 +105,7 @@ function App() {
           <tr>
             <th>Rank</th>
             <th>Country</th>
-            <th>GPD (per capita)</th>
+            <th>GDP (per capita)</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -114,7 +114,7 @@ function App() {
             <tr>
               <td>{element.rank}</td>
               <td>{element.name}</td>
-              <td>{'$'}{element.gpd.toLocaleString('es')}</td>
+              <td>{'$'}{element.gdp.toLocaleString('es')}</td>
               <td>                                 {/* Edit and delete buttons */}
                 <button className="btn btn-primary" onClick={() =>selectCountry(element, 'Edit')}>Edit</button>{' '}
                 <button className="btn btn-danger" onClick={() =>selectCountry(element, 'Delete')}>Delete</button>
@@ -152,12 +152,12 @@ function App() {
               onChange={handleChange}
             />
             <br />
-            <label>GPD (per capita)</label>
+            <label>GDP (per capita)</label>
             <input
               className="form-control"
               type="number"
-              name="gpd"
-              value={selectedCountry ? selectedCountry.gpd : ''}
+              name="gdp"
+              value={selectedCountry ? selectedCountry.gdp : ''}
               onChange={handleChange}        
             />
             <br />
@@ -199,11 +199,11 @@ function App() {
           </FormGroup>
 
           <FormGroup>
-            <label>GPD:</label>
+            <label>GDP:</label>
             <input className="form-control" 
-              name="gpd" 
+              name="gdp" 
               type="number" 
-              value={selectedCountry && selectedCountry.gpd}
+              value={selectedCountry && selectedCountry.gdp}
               onChange={handleChange}
             />
           </FormGroup>
